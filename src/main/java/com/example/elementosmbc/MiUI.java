@@ -1,3 +1,5 @@
+package com.example.elementosmbc;
+
 
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
