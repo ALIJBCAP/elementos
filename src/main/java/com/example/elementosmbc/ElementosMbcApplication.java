@@ -1,5 +1,6 @@
 package com.example.elementosmbc;
 
+import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,7 +17,21 @@ public class ElementosMbcApplication implements CommandLineRunner{
 
     @Override
     public void run(String... args) throws Exception {
-        servicio.obtenerSaldo().obtenerSaldo();
-        repoMensaje.save(new Mensaje("Mi primer mensaje"));
+        //LocalDate fecha=LocalDate.now();
+        
+        //servicio.obtenerSaldo().obtenerSaldo();
+        //repoMensaje.save(new Mensaje("hola",fecha,"cerdito"));
+        //buscar todos los mensajes
+          // for(Mensaje mensa: repoMensaje.findAll()){
+            //System.out.println(mensa);
+        } 
+            //buscar por id
+     
+            //System.out.println(repoMensaje.findByCuerpo("cerdito"));
+            
+            //el sigueinete es borrar            
+            //Mensaje m=new  Mensaje();
+            //m.setId("hola");
+            //repoMensaje.delete(m);
     }
 }

@@ -19,6 +19,19 @@ public class Mensaje {
     LocalDate Fecha;
     String cuerpo;
 
+    public Mensaje(String id, LocalDate Fecha, String cuerpo) {
+        this.id = id;
+        this.Fecha = Fecha;
+        this.cuerpo = cuerpo;
+    }
+
+    
+  
+    @Override
+    public String toString() {
+        return "Mensaje{" + "id=" + id + ", Fecha=" + Fecha + ", cuerpo=" + cuerpo + '}';
+    }
+
     public Mensaje(String cuerpo) {
         this.cuerpo = cuerpo;
     }
