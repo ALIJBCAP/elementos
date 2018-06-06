@@ -4,11 +4,14 @@ package com.example.elementosmbc;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Grid;
 import com.vaadin.ui.Label;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.UI;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -22,25 +25,52 @@ import com.vaadin.ui.themes.ValoTheme;
  */
 @SpringUI
 public class MiUI extends UI {
-
-    @Override
+@Autowired RepositorioMensaje repoMensaje;
+     @Override
     protected void init(VaadinRequest request) {
-      
-        VerticalLayout Layout=new VerticalLayout();
-        Label etiqueta=new Label("BIENVENIDO");
-                etiqueta.addStyleName(ValoTheme.LABEL_H2);
-                
-        TextField texto=new TextField(); 
-        texto.setPlaceholder("cuerpo del mensaje");
-        Button boton=new Button("ingresar");
+//poner el orden de arriba a abajo 
+
+        VerticalLayout layout=new VerticalLayout();
+        Label etiqueta=new Label("bienvenido a mi aplicacion"); 
+        etiqueta.addStyleName(ValoTheme.LABEL_H2);
+        
+        //METER CAMPO DE TEXTO
+        TextField texto=new TextField();
+        texto.setPlaceholder("CUERPO MENSAJE");
+        Button boton=new Button("GUARDAR MENSAJE");
         boton.addStyleName(ValoTheme.BUTTON_DANGER);
-        //AGREGAMOS ETIQUETA Y BUTTON A LAYOUT
-        Layout.addComponent(etiqueta);
-        Layout.addComponent(boton);
-        Layout.addComponent(texto);
         
-        setContent(Layout);
+        //MANEJAMOS EL EVENTGO DE TIPO BOTON
+        boton.addClickListener(algo->{
+            String cuerpo= texto.getValue();//variable local
+            //guardamos 
+            repoMensaje.save(new Mensaje(cuerpo));
+            //le comunicamos al usuario un mensajito que se guardo
+            Notification.show("MENSAJE GUARDADO", Notification.Type.ERROR_MESSAGE);
+             }
+        );
         
+        //CASO:BUSCAR TODOS
+        Grid<Mensaje> grid = new Grid<>();
+       
+        grid.setItems(repoMensaje.findAll());
+
+     grid.addColumn(Mensaje::getId).setCaption("id");
+     grid.addColumn(Mensaje::getCuerpo).setCaption("cuerpo");
+    
+        
+        //agregamos la etiueta y el boton a el layout 
+        layout.addComponent(etiqueta);
+        layout.addComponent(boton);
+        layout.addComponent(texto);
+        
+        //AGREGAMOS DICHA COMPONENTE A NUESTR LAYOUT
+        
+        layout.addComponent(grid);
+        //finalmente agregamos el layout al contenedor principal de init
+        setContent(layout);
     }
+
+
     
 }
