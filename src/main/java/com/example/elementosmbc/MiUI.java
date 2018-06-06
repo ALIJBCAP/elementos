@@ -31,12 +31,13 @@ public class MiUI extends UI {
 //poner el orden de arriba a abajo 
 
         VerticalLayout layout=new VerticalLayout();
-        Label etiqueta=new Label("bienvenido a mi aplicacion"); 
+        Label etiqueta=new Label("Hola Soy Goku,deja tu mensaje aqui abajo "); 
         etiqueta.addStyleName(ValoTheme.LABEL_H2);
+        
         
         //METER CAMPO DE TEXTO
         TextField texto=new TextField();
-        texto.setPlaceholder("CUERPO MENSAJE");
+        texto.setPlaceholder("");
         Button boton=new Button("GUARDAR MENSAJE");
         boton.addStyleName(ValoTheme.BUTTON_DANGER);
         
