@@ -31,9 +31,18 @@ public class MiUI extends UI {
 //poner el orden de arriba a abajo 
 
         VerticalLayout layout=new VerticalLayout();
-        Label etiqueta=new Label("Hola Soy Goku,deja tu mensaje aqui abajo "); 
+        Label etiqueta=new Label("hola");
         etiqueta.addStyleName(ValoTheme.LABEL_H2);
+                
+        // A container that is 100% wide by default
+        VerticalLayout dos = new VerticalLayout();
+        Label label1 = new Label("jiji");
+        dos.addStyleName(ValoTheme.LABEL_H3);
         
+        
+        
+      
+       
         
         //METER CAMPO DE TEXTO
         TextField texto=new TextField();
