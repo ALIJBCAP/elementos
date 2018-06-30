@@ -33,15 +33,6 @@ public class MiUI extends UI {
         VerticalLayout layout=new VerticalLayout();
         Label etiqueta=new Label("hola");
         etiqueta.addStyleName(ValoTheme.LABEL_H2);
-        etiqueta.addStyleName(ValoTheme.LABEL_H3);
-        etiqueta.addStyleName(ValoTheme.LABEL_H4);
-        
-                
-        // A container that is 100% wide by default
-    
-        
-        
-      
        
         
         //METER CAMPO DE TEXTO
